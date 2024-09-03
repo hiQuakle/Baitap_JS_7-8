@@ -105,7 +105,7 @@ document.getElementById("minToMax").onclick = function () {
 
 document.getElementById("soNguyenTo").onclick = function () {
   let firstPrimeNumber = [];
-  for (let i = 2; i < arrNumber.length; i++) {
+  for (let i = 0; i < arrNumber.length; i++) {
     if (isPrime(arrNumber[i])) {
       firstPrimeNumber.push(arrNumber[i]);
       break;
@@ -117,8 +117,41 @@ document.getElementById("soNguyenTo").onclick = function () {
 };
 function isPrime(arrNumber) {
   if (arrNumber <= 1) return false;
-  for (let i = 2; i <= Math.sqrt(arrNumber[i]); i++) {
-    if (arrNumber[i] % i === 0) return false; // Nếu chia hết cho i thì không phải số nguyên tố
+  for (let i = 2; i <= Math.sqrt(arrNumber); i++) {
+    if (arrNumber % i === 0) return false;
+    break;
   }
   return true;
 }
+let checkSoNguyen = [];
+document.getElementById("addNumber").onclick = function () {
+  let soNguyen = document.getElementById("inputFloat").value;
+  if (soNguyen == false) {
+    checkSoNguyen.push((soNguyen = 0));
+  } else {
+    checkSoNguyen.push(soNguyen);
+  }
+  document.getElementById("txtArrayFloat").innerHTML = checkSoNguyen;
+};
+console.log(checkSoNguyen);
+
+document.getElementById("countSoNguyen").onclick = function () {
+  let countSoNguyen = countIntergers(checkSoNguyen);
+
+  document.getElementById(
+    "txtInt"
+  ).innerHTML = `Có ${countSoNguyen} số nguyên.`;
+};
+function countIntergers(checkSoNguyen) {
+  let count = 0;
+  for (let i = 0; i < checkSoNguyen.length; i++) {
+    if (Number.isInteger(checkSoNguyen[i])) {
+      count++;
+    }
+  }
+  return count;
+}
+
+document.getElementById("difNum").onclick = function () {
+  document.getElementById("txtCompare").innerHTML = ``;
+};

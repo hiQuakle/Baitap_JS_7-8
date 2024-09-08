@@ -69,7 +69,7 @@ document.getElementById("smallestPositiveNumber").onclick = function () {
     ).innerHTML = `Số Dương Nhỏ Nhất Là: ${checkArrNumber}`;
   }
 };
-
+/**5 */
 document.getElementById("soChan").onclick = function () {
   let soChanCuoiCung;
   for (let i = 0; i < arrNumber.length; i++) {
@@ -145,13 +145,36 @@ document.getElementById("countSoNguyen").onclick = function () {
 function countIntergers(checkSoNguyen) {
   let count = 0;
   for (let i = 0; i < checkSoNguyen.length; i++) {
-    if (Number.isInteger(checkSoNguyen[i])) {
+    if (
+      checkSoNguyen[i] / 2 != 0 ||
+      checkSoNguyen[i] / 3 != 0 ||
+      Number.isInteger(checkSoNguyen[i])
+    ) {
       count++;
     }
   }
   return count;
 }
 
+/** 10 */
+
 document.getElementById("difNum").onclick = function () {
-  document.getElementById("txtCompare").innerHTML = ``;
+  let countAm = 0;
+  let countDuong = 0;
+
+  for (let i = 0; i < arrNumber.length; i++) {
+    if (arrNumber[i] > 0) {
+      countDuong++;
+    } else if (arrNumber[i] < 0) {
+      countAm++;
+    } else {
+      continue;
+    }
+  }
+
+  if (countDuong > countAm) {
+    document.getElementById("txtCompare").innerHTML = `Số Dương > Số Âm`;
+  } else {
+    document.getElementById("txtCompare").innerHTML = `Số Dương < Số Âm`;
+  }
 };
